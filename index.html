@@ -244,6 +244,27 @@
         <div class="chart-container">
             <canvas id="pieChart"></canvas>
         </div>
+        
+        <div id="codeBanner" style="text-align: center; margin-top: 24px;">
+            <img src="codeBanner.jpg" alt="Learn to Code Banner"
+                 style="max-width: 100%; border: 4px solid #f4a261; border-radius: 20px; height: auto; box-shadow: 0 6px 20px rgba(0,0,0,0.1);" />
+        </div>
+
+        <div id="lineContact"
+            style="display: none; margin-top: 32px; text-align: center; font-family: 'Prompt', sans-serif;">
+            <p id="lineText" style="margin-bottom: 12px; font-size: 15px; color: #333;"></p>
+            <a href="https://lin.ee/H8QdIJE" target="_blank"
+                style="display: inline-flex; align-items: center; text-decoration: none; border-radius: 40px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <div style="background-color: #06c755; padding: 10px 14px;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670089.png" alt="LINE Icon"
+                        style="height: 28px; width: 28px; margin: 0;" />
+                </div>
+                <div style="background-color: #06c755; padding: 10px 20px;">
+                    <span style="color: white; font-weight: 700; font-size: 18px;">@codekids</span>
+                </div>
+            </a>
+        </div>
+
     </div>
 
     <script>
@@ -259,7 +280,9 @@
                 yes: "YES",
                 no: "NO",
                 subtitle: "Fast & fun personality test for tech lovers",
-                result: "You are best suited for: "
+                result: "You are best suited for: ",
+                lineText: "Interested in learning to code? Chat with us on LINE!",
+
             },
             th: {
                 title: "ยินดีต้อนรับสู่แบบทดสอบค้นหาทักษะ",
@@ -269,7 +292,8 @@
                 yes: "ใช่",
                 no: "ไม่ใช่",
                 subtitle: "ค้นหาว่าคุณเหมาะกับสายเทคไหนที่สุด 🍟",
-                result: "คุณเหมาะกับสายนี้ที่สุด: "
+                result: "คุณเหมาะกับสายนี้ที่สุด: ",
+                lineText: "สนใจปรึกษาการเรียนเขียนโค้ด และทดลองเรียนออนไลน์ตัวต่อตัว"
             }
         };
 
@@ -429,6 +453,7 @@
 
         function renderQuestions() {
             const container = document.getElementById("questionBox");
+            
             container.innerHTML = "";
             questionList[currentLang].forEach((q, i) => {
                 const block = document.createElement("div");
@@ -446,6 +471,9 @@
         }
 
         function showResult() {
+            document.getElementById("lineText").innerText = lang[currentLang].lineText;
+            document.getElementById("codeBanner")
+            document.getElementById("lineContact").style.display = "block";
             submitted = true;
             Object.keys(scores).forEach(k => scores[k] = 0);
 
